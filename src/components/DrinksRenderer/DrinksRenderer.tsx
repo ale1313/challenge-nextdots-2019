@@ -28,7 +28,7 @@ const DrinksRenderer = props => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 12,
     justifyContent: "center",
     alignItems: "center"
   },
