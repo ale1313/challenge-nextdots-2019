@@ -1,28 +1,32 @@
 import { FETCH_START, FETCH_SUCCESS, FETCH_ERROR } from "../actions/types";
 
 interface initialState {
+  data: object;
   fetchIsLoading: boolean;
-  fetchError: any;
+  fetchError: string;
 }
 
 const initialState = {
+  data: null,
   fetchIsLoading: false,
   fetchError: null
 };
 
-export const request = async () => {
-  const response = await fetch(
-    "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=vodka"
-  );
-  const json = await response.json();
-  return json;
-};
-
-const fetchReducer = (state = initialState, action) => {
+const fetchReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case FETCH_START:
       return Object.assign({}, state, {
         fetchIsLoading: true
+      });
+    case FETCH_SUCCESS:
+      return Object.assign({}, state, {
+        fetchIsLoading: false,
+        data: action.data
+      });
+    case FETCH_ERROR:
+      return Object.assign({}, state, {
+        fetchIsLoading: false,
+        fetchError: action.error
       });
     default:
       return state;
