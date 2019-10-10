@@ -1,21 +1,20 @@
-import { settings, apiConnector } from "../base";
+import { APIConnector } from "..";
+import config from "../../config";
+import { DrinksList } from "../../screens/";
 
-const APIConnector = new apiConnector({ timeout: 50000 });
+const apiConnector = new APIConnector({ timeout: 50000 });
 
 export default class ServiceConfig {
-  static get endpoint() {
-    return `${settings.apiRestEndpoint}`;
+  static props: any;
+  static get endpoint(): string {
+    return `${config.API_URL}`;
   }
 
-  static get cocktails() {
-    return `${ServiceConfig.endpoint}/filter.php?g=Cocktail_glass`;
+  static get drinks(): string {
+    return `${ServiceConfig.endpoint}/search.php?s=`;
   }
 
-  static get cocktailsById() {
-    return `${ServiceConfig.endpoint}/lookup.php`;
-  }
-
-  static get APIConnector() {
-    return APIConnector;
+  static get APIConnector(): APIConnector {
+    return apiConnector;
   }
 }

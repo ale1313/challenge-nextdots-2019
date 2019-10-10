@@ -8,26 +8,27 @@ export const LogLevels = {
 export default class Logger {
   _name: string;
   _printTimestamp: boolean;
-  _console: Console;
+  _console: any;
+
   constructor(name = "main", printTimestamp = false) {
     this._name = name;
     this._printTimestamp = !!printTimestamp;
     this._console = console;
   }
 
-  log(...args) {
+  log(...args: any[]) {
     return this._log(LogLevels.LOG, ...args);
   }
 
-  info(...args) {
+  info(...args: any[]) {
     return this._log(LogLevels.INFO, ...args);
   }
 
-  warn(...args) {
+  warn(...args: any[]) {
     return this._log(LogLevels.WARN, ...args);
   }
 
-  error(...args) {
+  error(...args: any[]) {
     return this._log(LogLevels.ERROR, ...args);
   }
 
@@ -36,12 +37,11 @@ export default class Logger {
     return this;
   }
 
-  _log(level = LogLevels.INFO, ...args) {
-    let ts = this._printTimestamp ? `${+new Date()} ` : "";
+  _log(level = LogLevels.INFO, ...args: any[]) {
+    const ts = this._printTimestamp ? `${+new Date()} ` : "";
     try {
       this._console[level](`[${this._name}] ${ts}${level}:`, ...args);
     } catch (e) {
-      // eslint-disable-next-line no-console
       console.error(e);
     }
     return this;
