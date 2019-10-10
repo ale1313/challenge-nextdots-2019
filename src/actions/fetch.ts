@@ -1,32 +1,46 @@
-import { FETCH_START, FETCH_SUCCESS, FETCH_ERROR } from "./types";
-import CocktailService from "../provider/services/CocktailService";
+import {
+  FETCH_START,
+  FETCH_SUCCESS,
+  FETCH_ERROR,
+  RESULTS_SHOWING
+} from "./types";
+import DrinkService from "../provider/services/DrinkService";
 
 export const fetchStart = () => {
-  type: FETCH_START;
+  return {
+    type: FETCH_START
+  };
 };
 
-export const fetchSuccess = data => {
-  type: FETCH_SUCCESS;
-  data;
+export const fetchSuccess = (data: object) => {
+  return {
+    type: FETCH_SUCCESS,
+    data
+  };
 };
 
-export const fetchError = e => {
-  type: FETCH_ERROR;
-  e;
+export const fetchError = (e: string) => {
+  return {
+    type: FETCH_ERROR,
+    e
+  };
+};
+
+export const resultsShowing = () => {
+  return {
+    type: RESULTS_SHOWING
+  };
 };
 
 export function fetch() {
-  return async (dispatch, getState) => {
+  return async (dispatch: Function, getState: any) => {
     try {
       const fetchIsLoading = getState().fetchReducer.fetchIsLoading;
+      const text = getState().fetchReducer.inputText;
       if (!fetchIsLoading) {
         dispatch(fetchStart());
-        let cocktails: any = await CocktailService.getCocktails();
-        let infoCocktails: any = await CocktailService.getAllCocktailWithInfo(
-          cocktails.drinks
-        );
-        let allCocktails = await Cocktail.prepareToSave(infoCocktails);
-        dispatch(fetchSuccess(allCocktails));
+        let drinks: any = await DrinkService.getDrinks(text);
+        dispatch(fetchSuccess(drinks));
       }
     } catch (e) {
       dispatch(fetchError(e));

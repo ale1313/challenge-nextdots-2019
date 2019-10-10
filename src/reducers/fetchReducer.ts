@@ -1,15 +1,24 @@
-import { FETCH_START, FETCH_SUCCESS, FETCH_ERROR } from "../actions/types";
+import {
+  FETCH_START,
+  FETCH_SUCCESS,
+  FETCH_ERROR,
+  RESULTS_SHOWING
+} from "../actions/types";
 
 interface initialState {
   data: object;
   fetchIsLoading: boolean;
   fetchError: string;
+  showResults: boolean;
+  inputText: string;
 }
 
 const initialState = {
   data: null,
   fetchIsLoading: false,
-  fetchError: null
+  fetchError: null,
+  showResults: false,
+  inputText: ""
 };
 
 const fetchReducer = (state = initialState, action: any) => {
@@ -19,6 +28,7 @@ const fetchReducer = (state = initialState, action: any) => {
         fetchIsLoading: true
       });
     case FETCH_SUCCESS:
+      console.log(action.data);
       return Object.assign({}, state, {
         fetchIsLoading: false,
         data: action.data
@@ -27,6 +37,10 @@ const fetchReducer = (state = initialState, action: any) => {
       return Object.assign({}, state, {
         fetchIsLoading: false,
         fetchError: action.error
+      });
+    case RESULTS_SHOWING:
+      return Object.assign({}, state, {
+        showResults: true
       });
     default:
       return state;
