@@ -4,13 +4,18 @@ import { connect } from "react-redux";
 
 import ListItem from "../ListItem/";
 
-const DrinksRenderer = props => {
-  if (props.data) {
+interface Props {
+  data: any;
+  showResults: boolean;
+}
+
+const DrinksRenderer = (props: Props) => {
+  if (props.data && props.showResults) {
     return (
       <FlatList
         data={props.data.drinks}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={({ item }) => (
+        keyExtractor={(item: object, index: number) => index.toString()}
+        renderItem={({ item }: any) => (
           <ListItem drinkName={item.strDrink} drinkImage={item.strDrinkThumb} />
         )}
       />
@@ -41,7 +46,8 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state: any) => {
   return {
-    data: state.fetchReducer.data
+    data: state.fetchReducer.data,
+    showResults: state.fetchReducer.showResults
   };
 };
 

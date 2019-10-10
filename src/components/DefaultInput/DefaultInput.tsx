@@ -3,7 +3,9 @@ import { TextInput, StyleSheet } from "react-native";
 
 interface Props {
   placeholder: string;
-  style: [];
+  style: any;
+  onChangeText: any;
+  value: string;
 }
 
 const DefaultInput = (props: Props) => {
@@ -11,6 +13,8 @@ const DefaultInput = (props: Props) => {
     <TextInput
       placeholder={props.placeholder}
       style={[styles.textInput, props.style]}
+      onChangeText={props.onChangeText}
+      value={props.value}
     />
   );
 };

@@ -11,7 +11,7 @@ const ListItem = (props: Props) => {
     <View style={styles.container}>
       <Image
         resizeMode="contain"
-        source={props.drinkImage}
+        source={{ uri: props.drinkImage }}
         style={styles.drinkImage}
       />
       <Text style={styles.drinkName}>{props.drinkName}</Text>

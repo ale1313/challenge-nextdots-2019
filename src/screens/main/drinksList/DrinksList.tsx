@@ -2,17 +2,46 @@ import * as React from "react";
 import { View, StyleSheet } from "react-native";
 import { connect } from "react-redux";
 import Icon from "react-native-vector-icons/Ionicons";
+import { reduxForm } from "redux-form";
 
 import { default as DefaultInput } from "../../../components/DefaultInput";
-import { fetch } from "../../../actions/index";
+import { fetch, resultsShowing } from "../../../actions";
 import DrinksRenderer from "../../../components/DrinksRenderer";
 
-class DrinksList extends React.Component {
+type StoreProps = ReturnType<typeof mapStateToProps>;
+
+type ConnectProps = StoreProps & {
+  fetchStart: Function;
+};
+
+interface Props {
+  fetchStart: Function;
+  resultsShowing: Function;
+  inputText: string;
+}
+
+class DrinksList extends React.Component<Props> {
+  changeTextHandler = (val: string) => {
+    this.setState({
+      inputText: val
+    });
+    if (this.props.inputText.length >= 3) {
+      this.props.resultsShowing();
+    }
+  };
+  async componentDidMount() {
+    await this.props.fetchStart();
+  }
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.inputContainer}>
-          <DefaultInput placeholder="Drink name" style={styles.input} />
+          <DefaultInput
+            placeholder="Drink name"
+            style={styles.input}
+            onChangeText={this.changeTextHandler}
+            value={this.props.inputText}
+          />
           <Icon
             name="ios-close-circle"
             size={40}
@@ -46,13 +75,24 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = (state: any) => {
   return {
-    fetchStart: () => dispatch(fetch())
+    inputText: state.fetchReducer.inputText
+  };
+};
+
+const mapDispatchToProps = (dispatch: Function) => {
+  return {
+    fetchStart: () => dispatch(fetch()),
+    resultsShowing: () => dispatch(resultsShowing())
   };
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
-)(DrinksList);
+)(
+  reduxForm<ConnectProps>({
+    form: "drinkInput"
+  })(DrinksList)
+);
