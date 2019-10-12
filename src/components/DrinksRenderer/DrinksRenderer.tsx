@@ -35,7 +35,7 @@ const DrinksRenderer = (props: Props) => {
     return (
       <FlatList
         data={data.drinks}
-        keyExtractor={(item: object, index: number) => index.toString()}
+        keyExtractor={(item: any) => item.idDrink}
         renderItem={({ item }: any) => (
           <ListItem drinkName={item.strDrink} drinkImage={item.strDrinkThumb} />
         )}

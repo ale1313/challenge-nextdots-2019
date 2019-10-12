@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   headingText: {
-    fontSize: 45,
+    fontSize: 50,
     fontWeight: "bold",
     color: "#E35F5F",
     top: "20%",

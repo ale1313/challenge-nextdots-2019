@@ -1,7 +1,7 @@
 import * as React from "react";
 import Icon from "react-native-vector-icons/Ionicons";
 
-import { Text, TouchableOpacity, StyleSheet } from "react-native";
+import { Text, TouchableOpacity, Platform, StyleSheet } from "react-native";
 
 interface Props {
   onPress: any;
@@ -19,7 +19,7 @@ const SearchButton = (props: Props) => {
 
 const styles = StyleSheet.create({
   container: {
-    top: "50%",
+    top: Platform.OS === "ios" ? "80%" : "50%",
     width: "80%",
     flexDirection: "row",
     justifyContent: "center",
