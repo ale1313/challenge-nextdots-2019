@@ -22,18 +22,23 @@ const ListItem = (props: Props) => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
+    alignSelf: "center",
     alignItems: "center",
-    backgroundColor: "#C0C0C0",
-    margin: 3
+    backgroundColor: "#FFF",
+    margin: 6,
+    height: 80,
+    width: "95%",
+    borderRadius: 10
   },
   drinkImage: {
-    width: 30,
-    height: 30,
-    marginRight: 5
+    width: 60,
+    height: 60,
+    margin: 10
   },
   drinkName: {
     fontSize: 30,
-    color: "#800000"
+    color: "#800000",
+    maxWidth: "80%"
   }
 });
 

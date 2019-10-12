@@ -3,14 +3,34 @@ import { Text, View, FlatList, StyleSheet } from "react-native";
 import { connect } from "react-redux";
 
 import ListItem from "../ListItem/";
+import { DefaultText } from "../DefaultText";
 
 interface Props {
   data: any;
-  showResults: boolean;
+  show: boolean;
+  inputText: string;
+  fetchError: string;
 }
 
 const DrinksRenderer = (props: Props) => {
-  if (props.data && props.showResults) {
+  if (props.fetchError) {
+    return (
+      <DefaultText
+        containerStyle={styles.container}
+        textStyle={styles.listEmptyText}
+        value={props.fetchError.toString()}
+      />
+    );
+  } else if (props.data && props.show === true) {
+    if (props.data.drinks === null) {
+      return (
+        <DefaultText
+          containerStyle={styles.container}
+          textStyle={styles.listEmptyText}
+          value={`No results where found for "${props.inputText}"`}
+        />
+      );
+    }
     return (
       <FlatList
         data={props.data.drinks}
@@ -22,32 +42,34 @@ const DrinksRenderer = (props: Props) => {
     );
   } else {
     return (
-      <View style={styles.container}>
-        <Text style={styles.listEmptyText}>
-          Please search your favourite drink
-        </Text>
-      </View>
+      <DefaultText
+        containerStyle={styles.container}
+        textStyle={styles.listEmptyText}
+        value="Please search your favourite drink"
+      />
     );
   }
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 12,
+    flex: 1,
     justifyContent: "center",
     alignItems: "center"
   },
   listEmptyText: {
     fontSize: 30,
     color: "#FFF",
-    textAlign: "center"
+    textAlign: "center",
+    maxWidth: "95%"
   }
 });
 
 const mapStateToProps = (state: any) => {
   return {
     data: state.fetchReducer.data,
-    showResults: state.fetchReducer.showResults
+    inputText: state.fetchReducer.inputText,
+    fetchError: state.fetchReducer.fetchError
   };
 };
 

@@ -3,7 +3,11 @@ import Icon from "react-native-vector-icons/Ionicons";
 
 import { Text, TouchableOpacity, StyleSheet } from "react-native";
 
-const SearchButton = props => {
+interface Props {
+  onPress: any;
+}
+
+const SearchButton = (props: Props) => {
   return (
     <TouchableOpacity onPress={props.onPress} style={styles.container}>
       <Icon name="ios-search" size={40} color="#DC143C" />
