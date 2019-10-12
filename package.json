@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest",
-    "android": "~/Library/Android/sdk/tools/emulator -avd Pixel_XL_API_28_9.0"
+    "test": "jest"
   },
   "dependencies": {
     "@types/node": "^12.7.11",
