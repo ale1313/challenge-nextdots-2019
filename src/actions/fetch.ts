@@ -1,14 +1,10 @@
-import {
-  FETCH_START,
-  FETCH_SUCCESS,
-  FETCH_ERROR,
-  RESULTS_SHOWING
-} from "./types";
+import { FETCH_START, FETCH_SUCCESS, FETCH_ERROR } from "./types";
 import DrinkService from "../provider/services/DrinkService";
 
-export const fetchStart = () => {
+export const fetchStart = (data: string) => {
   return {
-    type: FETCH_START
+    type: FETCH_START,
+    data
   };
 };
 
@@ -26,19 +22,13 @@ export const fetchError = (e: string) => {
   };
 };
 
-export const resultsShowing = () => {
-  return {
-    type: RESULTS_SHOWING
-  };
-};
-
-export function fetch() {
+export function fetch(data: string) {
   return async (dispatch: Function, getState: any) => {
     try {
       const fetchIsLoading = getState().fetchReducer.fetchIsLoading;
-      const text = getState().fetchReducer.inputText;
       if (!fetchIsLoading) {
-        dispatch(fetchStart());
+        dispatch(fetchStart(data));
+        const text = getState().fetchReducer.inputText;
         let drinks: any = await DrinkService.getDrinks(text);
         dispatch(fetchSuccess(drinks));
       }
