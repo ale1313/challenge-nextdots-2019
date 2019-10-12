@@ -1,1 +1,1 @@
-export { default as DefaultText } from "./DefaultText";
+export { default } from "./DefaultText";

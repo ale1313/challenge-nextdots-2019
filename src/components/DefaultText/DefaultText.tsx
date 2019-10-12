@@ -8,9 +8,10 @@ interface Props {
 }
 
 const DefaultText = (props: Props) => {
+  let { containerStyle, textStyle, value } = props;
   return (
-    <View style={props.containerStyle}>
-      <Text style={props.textStyle}>{props.value}</Text>
+    <View style={containerStyle}>
+      <Text style={textStyle}>{value}</Text>
     </View>
   );
 };

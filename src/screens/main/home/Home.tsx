@@ -4,15 +4,17 @@ import { ImageBackground, Text, StyleSheet } from "react-native";
 import SearchButton from "../../../components/SearchButton";
 import background from "../../../assets/images/background.jpg";
 
-class Home extends React.Component {
-  props: any;
+interface Props {
+  navigation: any;
+}
+
+class Home extends React.Component<Props> {
   render() {
+    const { navigation } = this.props;
     return (
       <ImageBackground source={background} style={styles.container}>
         <Text style={styles.headingText}>Cocktail Finder</Text>
-        <SearchButton
-          onPress={() => this.props.navigation.navigate("DrinksList")}
-        />
+        <SearchButton onPress={() => navigation.navigate("DrinksList")} />
       </ImageBackground>
     );
   }

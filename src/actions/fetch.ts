@@ -28,7 +28,7 @@ export function fetch(data: string) {
       const fetchIsLoading = getState().fetchReducer.fetchIsLoading;
       if (!fetchIsLoading) {
         dispatch(fetchStart(data));
-        const text = getState().fetchReducer.inputText;
+        let text: string = getState().fetchReducer.inputText;
         let drinks: any = await DrinkService.getDrinks(text);
         dispatch(fetchSuccess(drinks));
       }

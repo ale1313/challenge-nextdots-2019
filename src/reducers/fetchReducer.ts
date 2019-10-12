@@ -15,21 +15,22 @@ const initialState = {
 };
 
 const fetchReducer = (state = initialState, action: any) => {
-  switch (action.type) {
+  let { type, data, e } = action;
+  switch (type) {
     case FETCH_START:
       return Object.assign({}, state, {
         fetchIsLoading: true,
-        inputText: action.data
+        inputText: data
       });
     case FETCH_SUCCESS:
       return Object.assign({}, state, {
         fetchIsLoading: false,
-        data: action.data
+        data
       });
     case FETCH_ERROR:
       return Object.assign({}, state, {
         fetchIsLoading: false,
-        fetchError: action.e
+        fetchError: e
       });
     default:
       return state;

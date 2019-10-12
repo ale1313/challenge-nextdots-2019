@@ -1,20 +1,21 @@
-import React from "react";
+import * as React from "react";
 import { TextInput, StyleSheet } from "react-native";
 
 interface Props {
   placeholder: string;
-  style: any;
+  style: object;
   onChangeText: any;
   value: string;
 }
 
 const DefaultInput = (props: Props) => {
+  let { placeholder, style, onChangeText, value } = props;
   return (
     <TextInput
-      placeholder={props.placeholder}
-      style={[styles.textInput, props.style]}
-      onChangeText={props.onChangeText}
-      value={props.value}
+      placeholder={placeholder}
+      style={[styles.textInput, style]}
+      onChangeText={onChangeText}
+      value={value}
     />
   );
 };
