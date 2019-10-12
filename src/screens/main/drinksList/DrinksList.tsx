@@ -1,5 +1,5 @@
 import * as React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, Platform, StyleSheet } from "react-native";
 import { connect } from "react-redux";
 import Icon from "react-native-vector-icons/Ionicons";
 import { Field, reduxForm, InjectedFormProps } from "redux-form";
@@ -12,6 +12,7 @@ type StoreProps = ReturnType<typeof mapStateToProps>;
 
 type ConnectProps = StoreProps & {
   fetch: Function;
+  navigation: any;
 };
 
 type FormProps = InjectedFormProps<Values, ConnectProps>;
@@ -62,6 +63,13 @@ class DrinksList extends React.Component<Props, State> {
     return (
       <View style={styles.container}>
         <View style={styles.inputContainer}>
+          <Icon.Button
+            name="ios-arrow-back"
+            size={40}
+            color="#FFF"
+            backgroundColor="transparent"
+            onPress={() => this.props.navigation.goBack()}
+          />
           <Field
             name="drink"
             component={this.renderInput}
@@ -97,24 +105,24 @@ const styles = StyleSheet.create({
   inputContainer: {
     flex: 1,
     flexDirection: "row",
-    alignItems: "center"
+    alignItems: "center",
+    justifyContent: "flex-end",
+    marginTop: Platform.OS === "ios" ? 35 : 10
   },
   drinksContainer: {
     flex: 12
   },
   input: {
-    width: "85%",
-    height: "100%"
+    width: "75%",
+    height: 50
   },
   icon: {
-    width: "50%",
-    marginLeft: "3.7%",
     color: "#FF4135"
   },
   searchIcon: {
     position: "absolute",
-    top: "13%",
-    left: "2%"
+    top: Platform.OS === "ios" ? "17%" : "15%",
+    left: "13%"
   }
 });
 
