@@ -2,13 +2,19 @@ import { createStackNavigator } from "react-navigation";
 
 import { Home, DrinksList } from "../screens";
 
+interface navigatorOptions {
+  initialRouteName: string;
+  headerMode: string;
+}
+
 const navigatorOptions = {
-  initialRouteName: "Home"
+  initialRouteName: "Home",
+  headerMode: "none"
 };
 
 const stack = {
-  Home: Home,
-  DrinksList: DrinksList
+  Home,
+  DrinksList
 };
 
 interface stack {
@@ -16,4 +22,7 @@ interface stack {
   DrinksList: any;
 }
 
-export const MainStack = createStackNavigator(stack);
+export const MainStack = createStackNavigator(
+  stack as object,
+  navigatorOptions as object
+);
