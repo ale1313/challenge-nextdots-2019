@@ -1,36 +1,36 @@
 # Challenge NextDots 2019 | Typescript | RN 0.59.9
- 
- <ul>
- <li>Fonts: <i>Hoefler Text</i> (iOS) / <i>Roboto</i> (Android)</li>
-</ul>
+ <img src="https://github.com/ale1313/challenge-nextdots-2019/blob/5e3ec0e9c6f19e42544ae6ee665937b34c5ee3da/src/assets/images/appPreview1.png" width="30%" title="Home Screen"/> <img src="https://github.com/ale1313/challenge-nextdots-2019/blob/5e3ec0e9c6f19e42544ae6ee665937b34c5ee3da/src/assets/images/appPreview2.png" width="30%" title="Drink List Screen"/>
 
-<h2>Getting Started</h2>
+
+* Fonts: *Hoefler Text* (iOS) / *Roboto* (Android)
+
+
+## Getting Started
 
 `$ yarn install`
 
-<h2>VSCode Extensions</h2>
+## VSCode Extensions
 
-<ul>
-<li>Prettier</li>
-</ul>
 
-<h2>Launch iOS</h2>
+* Prettier
+
+
+## Launch iOS
 
 `$ react-native run-ios`, or from XCode opening the workspace file
 
-<h2>Launch Android</h2>
+## Launch Android
 
 Have an android emulator running then execute `$ react-native run-android`, or simply build the app from Android Studio
 
-<h2>Libraries Used</h2>
+## Libraries Used
 
-<ul>
-<li>React Native: v0.59.9</li>
-<li>React Native Dotenv</li>
-<li>React Native Vector Icons</li>
-<li>React Navigation v3</li>
-<li>Redux</li>
-<li>Redux Forms</li>
-<li>Redux Thunk</li>
-<li>Typescript</li>
-</ul>
+* React Native: v0.59.9
+* React Native Dotenv
+* React Native Vector Icons
+* React Navigation v3
+* Redux
+* Redux Forms
+* Redux Thunk
+* Typescript
+
