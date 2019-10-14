@@ -1,12 +1,11 @@
 import * as React from "react";
-import { View, Platform, StyleSheet } from "react-native";
+import { View, Platform, StatusBar, StyleSheet } from "react-native";
 import { connect } from "react-redux";
 import Icon from "react-native-vector-icons/Ionicons";
 import { Field, reduxForm, InjectedFormProps } from "redux-form";
 
-import { default as DefaultInput } from "../../../components/DefaultInput";
+import { DefaultInput, DrinksRenderer } from "../../../components";
 import { fetch } from "../../../actions";
-import DrinksRenderer from "../../../components/DrinksRenderer";
 
 type StoreProps = ReturnType<typeof mapStateToProps>;
 
@@ -32,16 +31,20 @@ class DrinksList extends React.Component<Props, State> {
     showResults: false
   };
   changeTextHandler = (val: any) => {
-    if (val.length >= 3) {
-      this.setState({
-        showResults: true
-      });
-      this.props.fetch(val);
-    } else {
-      this.setState({
-        showResults: false
-      });
-    }
+    let changeText = () => {
+      if (val.length >= 3) {
+        this.setState({
+          showResults: true
+        });
+        this.props.fetch(val);
+      } else {
+        this.setState({
+          showResults: false
+        });
+      }
+      clearInterval(timer);
+    };
+    const timer = setInterval(() => changeText(), 250);
   };
   cancelHandler = () => {
     this.setState({
@@ -62,6 +65,7 @@ class DrinksList extends React.Component<Props, State> {
   render() {
     return (
       <View style={styles.container}>
+        <StatusBar hidden={true} />
         <View style={styles.inputContainer}>
           <Icon.Button
             name="ios-arrow-back"

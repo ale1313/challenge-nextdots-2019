@@ -1,7 +1,7 @@
 import * as React from "react";
-import { ImageBackground, Text, StyleSheet } from "react-native";
+import { ImageBackground, Text, StatusBar, StyleSheet } from "react-native";
 
-import SearchButton from "../../../components/SearchButton";
+import { SearchButton } from "../../../components";
 import background from "../../../assets/images/background.jpg";
 
 interface Props {
@@ -13,7 +13,11 @@ class Home extends React.Component<Props> {
     const { navigation } = this.props;
     return (
       <ImageBackground source={background} style={styles.container}>
-        <Text style={styles.headingText}>Cocktail Finder</Text>
+        <StatusBar barStyle="light-content" />
+        <Text style={styles.headingText}>Mr. Cocktail</Text>
+        <Text style={[styles.headingText, styles.headingText2]}>
+          Drink Finder
+        </Text>
         <SearchButton onPress={() => navigation.navigate("DrinksList")} />
       </ImageBackground>
     );
@@ -35,6 +39,10 @@ const styles = StyleSheet.create({
     textShadowColor: "#971111",
     textShadowOffset: { width: 5, height: 2 },
     textShadowRadius: 3
+  },
+  headingText2: {
+    fontSize: 40,
+    color: "crimson"
   }
 });
 
