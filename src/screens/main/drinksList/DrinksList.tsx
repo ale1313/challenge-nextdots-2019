@@ -94,7 +94,12 @@ class DrinksList extends React.Component<Props, State> {
           />
         </View>
         <View style={styles.drinksContainer}>
-          <DrinksRenderer show={this.state.showResults} />
+          <DrinksRenderer
+            show={this.state.showResults}
+            inputText={this.props.inputText}
+            data={this.props.data}
+            fetchError={this.props.fetchError}
+          />
         </View>
       </View>
     );
@@ -133,7 +138,9 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state: any) => {
   return {
     inputText: state.fetchReducer.inputText,
-    drinkInput: state.form.drinkInput
+    drinkInput: state.form.drinkInput,
+    fetchError: state.fetchReducer.fetchError,
+    data: state.fetchReducer.data
   };
 };
 

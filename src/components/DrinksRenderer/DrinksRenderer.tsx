@@ -1,6 +1,5 @@
 import * as React from "react";
 import { FlatList, StyleSheet } from "react-native";
-import { connect } from "react-redux";
 
 import ListItem from "../ListItem";
 import DefaultText from "../DefaultText";
@@ -66,12 +65,4 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapStateToProps = (state: any) => {
-  return {
-    data: state.fetchReducer.data,
-    inputText: state.fetchReducer.inputText,
-    fetchError: state.fetchReducer.fetchError
-  };
-};
-
-export default connect(mapStateToProps)(DrinksRenderer);
+export default DrinksRenderer;
