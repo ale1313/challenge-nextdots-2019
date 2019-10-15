@@ -1,8 +1,9 @@
 import * as React from "react";
-import { FlatList, StyleSheet } from "react-native";
+import { FlatList } from "react-native";
 
 import ListItem from "../ListItem";
 import DefaultText from "../DefaultText";
+import styles from "./styles";
 
 interface Props {
   data: any;
@@ -50,19 +51,5 @@ const DrinksRenderer = (props: Props) => {
     );
   }
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  listEmptyText: {
-    fontSize: 30,
-    color: "#FFF",
-    textAlign: "center",
-    maxWidth: "95%"
-  }
-});
 
 export default DrinksRenderer;

@@ -1,10 +1,11 @@
 import * as React from "react";
-import { View, Platform, StatusBar, StyleSheet } from "react-native";
+import { View, StatusBar } from "react-native";
 import { connect } from "react-redux";
 import Icon from "react-native-vector-icons/Ionicons";
 import { Field, reduxForm, InjectedFormProps } from "redux-form";
 
 import { DefaultInput, DrinksRenderer } from "../../../components";
+import styles from "./styles";
 import { fetch } from "../../../actions";
 
 type StoreProps = ReturnType<typeof mapStateToProps>;
@@ -105,35 +106,6 @@ class DrinksList extends React.Component<Props, State> {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#006064"
-  },
-  inputContainer: {
-    flex: 1,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "flex-end",
-    marginTop: Platform.OS === "ios" ? 35 : 10
-  },
-  drinksContainer: {
-    flex: 12
-  },
-  input: {
-    width: "75%",
-    height: 50
-  },
-  icon: {
-    color: "#FF4135"
-  },
-  searchIcon: {
-    position: "absolute",
-    top: Platform.OS === "ios" ? "17%" : "15%",
-    left: "13%"
-  }
-});
 
 const mapStateToProps = (state: any) => {
   return {
