@@ -6,12 +6,12 @@ import { Field, reduxForm, InjectedFormProps } from "redux-form";
 
 import { DefaultInput, DrinksRenderer } from "../../../components";
 import styles from "./styles";
-import { fetch } from "../../../actions";
+import { getDrinks } from "../../../actions";
 
 type StoreProps = ReturnType<typeof mapStateToProps>;
 
 type ConnectProps = StoreProps & {
-  fetch: Function;
+  getDrinks: Function;
   navigation: any;
 };
 
@@ -37,7 +37,7 @@ class DrinksList extends React.Component<Props, State> {
         this.setState({
           showResults: true
         });
-        this.props.fetch(val);
+        this.props.getDrinks(val);
       } else {
         this.setState({
           showResults: false
@@ -109,16 +109,16 @@ class DrinksList extends React.Component<Props, State> {
 
 const mapStateToProps = (state: any) => {
   return {
-    inputText: state.fetchReducer.inputText,
+    inputText: state.drinksReducer.inputText,
     drinkInput: state.form.drinkInput,
-    fetchError: state.fetchReducer.fetchError,
-    data: state.fetchReducer.data
+    fetchError: state.drinksReducer.fetchError,
+    data: state.drinksReducer.data
   };
 };
 
 const mapDispatchToProps = (dispatch: Function) => {
   return {
-    fetch: (data: string) => dispatch(fetch(data))
+    getDrinks: (data: string) => dispatch(getDrinks(data))
   };
 };
 

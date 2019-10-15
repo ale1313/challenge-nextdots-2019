@@ -1,4 +1,8 @@
-import { FETCH_START, FETCH_SUCCESS, FETCH_ERROR } from "../actions/types";
+import {
+  GET_DRINKS_START,
+  GET_DRINKS_SUCCESS,
+  GET_DRINKS_ERROR
+} from "../actions/types";
 
 interface initialState {
   data: object;
@@ -14,27 +18,27 @@ const initialState = {
   inputText: null
 };
 
-const fetchReducer = (state = initialState, action: any) => {
-  let { type, data, e } = action;
+const drinksReducer = (state = initialState, action: any) => {
+  let { type, data, err } = action;
   switch (type) {
-    case FETCH_START:
+    case GET_DRINKS_START:
       return Object.assign({}, state, {
         fetchIsLoading: true,
         inputText: data
       });
-    case FETCH_SUCCESS:
+    case GET_DRINKS_SUCCESS:
       return Object.assign({}, state, {
         fetchIsLoading: false,
         data
       });
-    case FETCH_ERROR:
+    case GET_DRINKS_ERROR:
       return Object.assign({}, state, {
         fetchIsLoading: false,
-        fetchError: e
+        fetchError: err
       });
     default:
       return state;
   }
 };
 
-export default fetchReducer;
+export default drinksReducer;

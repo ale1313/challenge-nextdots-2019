@@ -1,3 +1,3 @@
-export const FETCH_START = "FETCH_START";
-export const FETCH_SUCCESS = "FETCH_SUCCESS";
-export const FETCH_ERROR = "FETCH_ERROR";
+export const GET_DRINKS_START = "GET_DRINKS_START";
+export const GET_DRINKS_SUCCESS = "GET_DRINKS_SUCCESS";
+export const GET_DRINKS_ERROR = "GET_DRINKS_ERROR";

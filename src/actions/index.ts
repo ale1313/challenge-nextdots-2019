@@ -1,1 +1,1 @@
-export { fetch } from "./fetch";
+export { getDrinks } from "./getDrinks";

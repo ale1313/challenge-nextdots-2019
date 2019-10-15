@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
 import { reducer as formReducer } from "redux-form";
 
-import fetchReducer from "./fetchReducer";
+import drinksReducer from "./drinksReducer";
 
 const state = combineReducers({
-  fetchReducer,
+  drinksReducer,
   form: formReducer
 });
 
