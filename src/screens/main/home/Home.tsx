@@ -2,7 +2,7 @@ import * as React from "react";
 import { ImageBackground, Text, StatusBar, StyleSheet } from "react-native";
 
 import { SearchButton } from "../../../components";
-import background from "../../../assets/images/background.jpg";
+import { background } from "../../../assets";
 
 interface Props {
   navigation: any;
