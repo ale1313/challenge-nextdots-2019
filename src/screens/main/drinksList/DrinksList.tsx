@@ -32,12 +32,13 @@ class DrinksList extends React.Component<Props, State> {
     showResults: false
   };
   changeTextHandler = (val: any) => {
+    const { getDrinks } = this.props;
     let changeText = () => {
       if (val.length >= 3) {
         this.setState({
           showResults: true
         });
-        this.props.getDrinks(val);
+        getDrinks(val);
       } else {
         this.setState({
           showResults: false
@@ -48,10 +49,11 @@ class DrinksList extends React.Component<Props, State> {
     const timer = setInterval(() => changeText(), 250);
   };
   cancelHandler = () => {
+    const { reset } = this.props;
     this.setState({
       showResults: false
     });
-    this.props.reset();
+    reset();
   };
   renderInput = (props: any) => {
     return (
@@ -64,6 +66,8 @@ class DrinksList extends React.Component<Props, State> {
     );
   };
   render() {
+    const { navigation, inputText, fetchError, data } = this.props;
+    const { showResults } = this.state;
     return (
       <View style={styles.container}>
         <StatusBar hidden={true} />
@@ -73,7 +77,7 @@ class DrinksList extends React.Component<Props, State> {
             size={40}
             color="#FFF"
             backgroundColor="transparent"
-            onPress={() => this.props.navigation.goBack()}
+            onPress={() => navigation.goBack()}
           />
           <Field
             name="drink"
@@ -96,10 +100,10 @@ class DrinksList extends React.Component<Props, State> {
         </View>
         <View style={styles.drinksContainer}>
           <DrinksRenderer
-            show={this.state.showResults}
-            inputText={this.props.inputText}
-            data={this.props.data}
-            fetchError={this.props.fetchError}
+            show={showResults}
+            inputText={inputText}
+            data={data}
+            fetchError={fetchError}
           />
         </View>
       </View>
