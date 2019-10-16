@@ -11,7 +11,7 @@ interface Props {
 }
 
 const DefaultInput = (props: Props) => {
-  let { placeholder, style, onChangeText, value } = props;
+  const { placeholder, style, onChangeText, value } = props;
   return (
     <TextInput
       placeholder={placeholder}

@@ -38,7 +38,7 @@ class DrinksList extends React.Component<Props, State> {
         this.setState({
           showResults: true
         });
-        getDrinks(val, fetchIsLoading);
+        getDrinks(val, fetchIsLoading, val);
       } else {
         this.setState({
           showResults: false
@@ -123,8 +123,8 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: Function) => {
   return {
-    getDrinks: (data: string, fetchIsLoading: boolean) =>
-      dispatch(getDrinks(data, fetchIsLoading))
+    getDrinks: (data: string, fetchIsLoading: boolean, val: string) =>
+      dispatch(getDrinks(data, fetchIsLoading, val))
   };
 };
 
