@@ -26,10 +26,9 @@ export const getDrinksError = (err: string) => {
   };
 };
 
-export function getDrinks(data: string) {
+export function getDrinks(data: string, fetchIsLoading: boolean) {
   return async (dispatch: Function, getState: any) => {
     try {
-      const fetchIsLoading = getState().drinksReducer.fetchIsLoading;
       if (!fetchIsLoading) {
         dispatch(getDrinksStart(data));
         let text: string = getState().drinksReducer.inputText;

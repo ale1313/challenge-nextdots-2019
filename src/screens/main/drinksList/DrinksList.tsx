@@ -32,13 +32,13 @@ class DrinksList extends React.Component<Props, State> {
     showResults: false
   };
   changeTextHandler = (val: any) => {
-    const { getDrinks } = this.props;
+    const { getDrinks, fetchIsLoading } = this.props;
     let changeText = () => {
       if (val.length >= 3) {
         this.setState({
           showResults: true
         });
-        getDrinks(val);
+        getDrinks(val, fetchIsLoading);
       } else {
         this.setState({
           showResults: false
@@ -116,13 +116,15 @@ const mapStateToProps = (state: any) => {
     inputText: state.drinksReducer.inputText,
     drinkInput: state.form.drinkInput,
     fetchError: state.drinksReducer.fetchError,
-    data: state.drinksReducer.data
+    data: state.drinksReducer.data,
+    fetchIsLoading: state.drinksReducer.fetchIsLoading
   };
 };
 
 const mapDispatchToProps = (dispatch: Function) => {
   return {
-    getDrinks: (data: string) => dispatch(getDrinks(data))
+    getDrinks: (data: string, fetchIsLoading: boolean) =>
+      dispatch(getDrinks(data, fetchIsLoading))
   };
 };
 
