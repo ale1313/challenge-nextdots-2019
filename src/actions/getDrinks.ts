@@ -26,13 +26,12 @@ export const getDrinksError = (err: string) => {
   };
 };
 
-export function getDrinks(data: string, fetchIsLoading: boolean) {
-  return async (dispatch: Function, getState: any) => {
+export function getDrinks(data: string, fetchIsLoading: boolean, val: string) {
+  return async (dispatch: Function) => {
     try {
       if (!fetchIsLoading) {
         dispatch(getDrinksStart(data));
-        let text: string = getState().drinksReducer.inputText;
-        let drinks: any = await DrinkService.getDrinks(text);
+        let drinks: any = await DrinkService.getDrinks(val);
         dispatch(getDrinksSuccess(drinks));
       }
     } catch (err) {
