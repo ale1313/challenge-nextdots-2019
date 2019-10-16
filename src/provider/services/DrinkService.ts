@@ -7,7 +7,7 @@ export default class DrinkService {
         let endpoint = `${ServiceConfig.drinks}${text}`;
         let response: any = await ServiceConfig.APIConnector.get(endpoint);
         if (response.__ok) {
-          delete response.__ok;
+          response.__ok = null;
           resolve(response);
         } else reject();
       } catch (error) {
