@@ -1,5 +1,9 @@
 import { StyleSheet } from "react-native";
 
+import { theme } from "../../../styles";
+
+const { homeText, homeSubText, homeTextShadow } = theme.color;
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -8,17 +12,17 @@ const styles = StyleSheet.create({
   headingText: {
     fontSize: 50,
     fontWeight: "bold",
-    color: "#E35F5F",
+    color: homeText,
     top: "20%",
     width: "100%",
     textAlign: "center",
-    textShadowColor: "#971111",
+    textShadowColor: homeTextShadow,
     textShadowOffset: { width: 5, height: 2 },
     textShadowRadius: 3
   },
   headingText2: {
     fontSize: 40,
-    color: "crimson"
+    color: homeSubText
   }
 });
 

@@ -75,27 +75,22 @@ class DrinksList extends React.Component<Props, State> {
           <Icon.Button
             name="ios-arrow-back"
             size={40}
-            color="#FFF"
-            backgroundColor="transparent"
             onPress={() => navigation.goBack()}
+            iconStyle={styles.backButton}
+            backgroundColor={styles.backButton.backgroundColor}
           />
           <Field
             name="drink"
             component={this.renderInput}
             onChange={this.changeTextHandler}
           />
-          <Icon
-            name="ios-search"
-            size={40}
-            color="gray"
-            style={styles.searchIcon}
-          />
+          <Icon name="ios-search" size={40} style={styles.searchIcon} />
           <Icon.Button
             name="ios-close-circle"
             size={40}
-            iconStyle={styles.icon}
+            iconStyle={styles.closeButton}
             onPress={this.cancelHandler}
-            backgroundColor="transparent"
+            backgroundColor={styles.closeButton.backgroundColor}
           />
         </View>
         <View style={styles.drinksContainer}>

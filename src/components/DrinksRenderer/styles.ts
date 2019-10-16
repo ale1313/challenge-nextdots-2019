@@ -1,5 +1,9 @@
 import { StyleSheet } from "react-native";
 
+import { theme } from "../../styles";
+
+const { drinksRenderer } = theme.color;
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -8,7 +12,7 @@ const styles = StyleSheet.create({
   },
   listEmptyText: {
     fontSize: 30,
-    color: "#FFF",
+    color: drinksRenderer,
     textAlign: "center",
     maxWidth: "95%"
   }

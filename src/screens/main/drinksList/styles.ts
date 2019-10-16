@@ -1,9 +1,24 @@
 import { Platform, StyleSheet } from "react-native";
 
+import { theme } from "../../../styles";
+
+const {
+  drinksListBackground,
+  drinksListCloseColor,
+  drinksListBackBackground,
+  drinksListBackColor,
+  drinksListSearchIcon,
+  drinksListCloseBackground
+} = theme.color;
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#006064"
+    backgroundColor: drinksListBackground
+  },
+  backButton: {
+    color: drinksListBackColor,
+    backgroundColor: drinksListBackBackground
   },
   inputContainer: {
     flex: 1,
@@ -19,13 +34,15 @@ const styles = StyleSheet.create({
     width: "75%",
     height: 50
   },
-  icon: {
-    color: "#FF4135"
+  closeButton: {
+    color: drinksListCloseColor,
+    backgroundColor: drinksListCloseBackground
   },
   searchIcon: {
     position: "absolute",
     top: Platform.OS === "ios" ? "17%" : "15%",
-    left: "13%"
+    left: "13%",
+    color: drinksListSearchIcon
   }
 });
 

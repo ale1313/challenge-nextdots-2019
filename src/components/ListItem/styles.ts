@@ -1,5 +1,11 @@
 import { StyleSheet, Platform } from "react-native";
 
+import { theme } from "../../styles";
+
+const { listItem } = theme.color;
+
+export const backgrounds = theme.listItemBackgrounds;
+
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
@@ -18,7 +24,7 @@ const styles = StyleSheet.create({
   },
   drinkName: {
     fontSize: 35,
-    color: "#800000",
+    color: listItem,
     maxWidth: "60%",
     fontFamily: Platform.OS === "ios" ? "Hoefler Text" : "Roboto"
   }

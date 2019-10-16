@@ -1,5 +1,9 @@
 import { Platform, StyleSheet } from "react-native";
 
+import { theme } from "../../styles";
+
+const { searchButtonBackground, searchButtonBorder } = theme.color;
+
 const styles = StyleSheet.create({
   container: {
     top: Platform.OS === "ios" ? "80%" : "50%",
@@ -7,8 +11,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#EEE",
-    borderColor: "#FA8072",
+    backgroundColor: searchButtonBackground,
+    borderColor: searchButtonBorder,
     borderWidth: 3,
     borderRadius: 10
   },
